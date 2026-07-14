@@ -1,0 +1,7 @@
+{
+    "name": "perfume_online_shop",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "echo 'no build needed'"
+    }
+}
