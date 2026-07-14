@@ -391,6 +391,8 @@ button {
 }
 .trust-badges-row { display: none; flex-wrap: wrap; gap: 0.6rem; }
 .trust-badges-row.is-visible { display: flex; }
+.footer-admin-link { color: rgba(249, 244, 232, 0.45); font-size: 0.78rem; transition: color 0.3s; }
+.footer-admin-link:hover { color: var(--gold); }
 .trust-badge-pill {
   font-size: 0.72rem; font-weight: 600; padding: 0.35rem 0.8rem;
   border: 1px solid var(--line-light); border-radius: 999px; color: rgba(249, 244, 232, 0.75);
