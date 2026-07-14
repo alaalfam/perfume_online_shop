@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>جزئیات سفارش | پنل مدیریت مهراب</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="admin-topbar">
+    <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="باز کردن منو">☰</button>
+    <span class="admin-topbar-title">جزئیات سفارش</span>
+  </div>
+  <div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+    <main class="admin-main">
+      <a href="orders.html" class="admin-back-link">← بازگشت به لیست سفارشات</a>
+
+      <div class="admin-page-head">
+        <div>
+          <h1 class="admin-page-title" id="orderTitle">سفارش</h1>
+          <p class="admin-page-sub" id="orderSubtitle"></p>
+        </div>
+        <div style="display:flex; gap:0.6rem; flex-wrap:wrap">
+          <a class="btn btn-ghost" id="invoiceLink" href="#" target="_blank" rel="noopener" style="color:var(--ink); border-color:var(--line)">مشاهده / دانلود فاکتور (PDF)</a>
+        </div>
+      </div>
+
+      <p class="no-results" id="orderNotFound" style="display:none">سفارشی با این کد یافت نشد.</p>
+
+      <div id="orderContent">
+        <!-- Customer info — required & always visible -->
+        <div class="admin-card">
+          <h2>اطلاعات مشتری</h2>
+          <div class="specs-table">
+            <div class="spec-row"><span class="spec-label">نام و نام خانوادگی</span><span class="spec-value" id="custName"></span></div>
+            <div class="spec-row"><span class="spec-label">شماره تماس</span><span class="spec-value" id="custPhone" style="direction:ltr"></span></div>
+            <div class="spec-row"><span class="spec-label">آدرس</span><span class="spec-value" id="custAddress"></span></div>
+          </div>
+        </div>
+
+        <!-- Status management -->
+        <div class="admin-card">
+          <h2>وضعیت سفارش</h2>
+          <div class="admin-form-grid">
+            <div class="admin-field">
+              <label for="orderStatusSelect">وضعیت سفارش</label>
+              <select id="orderStatusSelect"></select>
+            </div>
+            <div class="admin-field">
+              <label>وضعیت پرداخت</label>
+              <button type="button" class="btn btn-ghost" id="paidToggleBtn" style="color:var(--ink); border-color:var(--line)"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Items -->
+        <div class="admin-card">
+          <h2>اقلام سفارش</h2>
+          <div class="specs-table" id="orderItemsTable"></div>
+        </div>
+
+        <!-- Shipping / payment / totals -->
+        <div class="admin-card">
+          <h2>ارسال، پرداخت و مبلغ</h2>
+          <div class="specs-table" id="orderSummaryTable"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="admin-toast" id="adminToast" role="status"></div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/orders-store.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-shell.js"></script>
+  <script src="js/admin-order-detail.js"></script>
+</body>
+</html>

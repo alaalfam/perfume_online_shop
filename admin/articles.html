@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مدیریت مقالات | پنل مدیریت مهراب</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="admin-topbar">
+    <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="باز کردن منو">☰</button>
+    <span class="admin-topbar-title">مقالات</span>
+  </div>
+  <div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <h1 class="admin-page-title">مدیریت مقالات</h1>
+          <p class="admin-page-sub">نوشته‌های مجله عطر مهراب.</p>
+        </div>
+        <button type="button" class="btn btn-solid" id="addArticleBtn">+ افزودن مقاله</button>
+      </div>
+
+      <div class="admin-toolbar">
+        <input type="search" id="searchArticles" placeholder="جستجوی عنوان مقاله…" />
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>عنوان</th>
+              <th>دسته‌بندی</th>
+              <th>تاریخ</th>
+              <th>زمان مطالعه</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="articlesTableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div class="admin-modal-overlay" id="articleModalOverlay">
+    <div class="admin-modal">
+      <div class="admin-modal-head">
+        <h2 id="articleModalTitle">افزودن مقاله</h2>
+        <button type="button" class="admin-modal-close" id="articleModalClose">×</button>
+      </div>
+
+      <form class="admin-form" id="articleForm">
+        <input type="hidden" id="articleOrigSlug" />
+
+        <div class="admin-form-grid">
+          <div class="admin-field admin-field-full">
+            <label for="articleTitleInput">عنوان مقاله</label>
+            <input type="text" id="articleTitleInput" required />
+          </div>
+          <div class="admin-field">
+            <label for="articleCategoryInput">دسته‌بندی</label>
+            <input type="text" id="articleCategoryInput" placeholder="راهنمای خرید" required />
+          </div>
+          <div class="admin-field">
+            <label for="articleReadMinutes">زمان مطالعه (دقیقه)</label>
+            <input type="number" id="articleReadMinutes" min="1" value="4" required />
+          </div>
+          <div class="admin-field">
+            <label for="articleTint">رنگ نمایشی</label>
+            <input type="color" id="articleTint" value="#b8892f" />
+          </div>
+          <div class="admin-field admin-field-full">
+            <label for="articleExcerpt">خلاصه (در لیست مقالات نمایش داده می‌شود)</label>
+            <textarea id="articleExcerpt" rows="2" required></textarea>
+          </div>
+
+          <div class="admin-field admin-field-full">
+            <label for="articleSeoTitleInput">عنوان سئو (اختیاری — خالی بماند یعنی از عنوان مقاله استفاده شود)</label>
+            <input type="text" id="articleSeoTitleInput" />
+          </div>
+          <div class="admin-field admin-field-full">
+            <label for="articleSeoDescInput">توضیحات متا سئو (اختیاری — خالی بماند یعنی از خلاصه استفاده شود)</label>
+            <textarea id="articleSeoDescInput" rows="2"></textarea>
+          </div>
+
+          <div class="admin-field admin-field-full">
+            <label for="articleBody">متن ساده مقاله — هر پاراگراف در یک خط جدید</label>
+            <textarea id="articleBody" rows="6"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-card" style="margin:0; padding:1rem; background:#f4efe2">
+          <h2 style="font-size:0.95rem">کد سفارشی (اختیاری)</h2>
+          <p class="admin-field-hint" style="margin-bottom:0.9rem">در صورت پر بودن کد HTML، این مقاله به‌جای متن ساده بالا، با این کد نمایش داده می‌شود.</p>
+
+          <div class="admin-form-grid">
+            <div class="admin-field"><label for="articleHtmlFile">بارگزاری فایل HTML</label><input type="file" id="articleHtmlFile" accept=".html,text/html" /></div>
+            <div class="admin-field"><label for="articleCssFile">بارگزاری فایل CSS</label><input type="file" id="articleCssFile" accept=".css,text/css" /></div>
+          </div>
+          <div class="admin-field">
+            <label for="articleHtmlInput">کد HTML</label>
+            <textarea id="articleHtmlInput" rows="4" style="direction:ltr;text-align:left;font-family:monospace;font-size:0.8rem"></textarea>
+          </div>
+          <div class="admin-field">
+            <label for="articleCssInput">کد CSS</label>
+            <textarea id="articleCssInput" rows="3" style="direction:ltr;text-align:left;font-family:monospace;font-size:0.8rem"></textarea>
+          </div>
+          <div class="admin-field">
+            <label for="articleJsFile">بارگزاری فایل JS</label>
+            <input type="file" id="articleJsFile" accept=".js,text/javascript" />
+          </div>
+          <div class="admin-field">
+            <label for="articleJsInput">کد JavaScript</label>
+            <textarea id="articleJsInput" rows="3" style="direction:ltr;text-align:left;font-family:monospace;font-size:0.8rem"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-form-actions">
+          <button type="submit" class="btn btn-solid">ذخیره مقاله</button>
+          <button type="button" class="btn btn-ghost" id="articleCancelBtn" style="color:var(--ink); border-color:var(--line)">انصراف</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="adminToast" role="status"></div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/articles.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-shell.js"></script>
+  <script src="js/admin-articles.js"></script>
+</body>
+</html>

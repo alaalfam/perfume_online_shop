@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فاکتور | عطر مهراب</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body style="background:#fff">
+
+  <div class="invoice-toolbar no-print">
+    <a href="orders.html">← بازگشت به سفارشات</a>
+    <button type="button" class="btn btn-solid" id="printBtn">چاپ / دانلود PDF</button>
+  </div>
+  <p class="invoice-hint no-print">برای دریافت فایل PDF، در پنجره‌ی چاپ گزینه‌ی «ذخیره به‌عنوان PDF / Save as PDF» را انتخاب کنید.</p>
+
+  <p class="no-results" id="invoiceNotFound" style="display:none; max-width:640px; margin:3rem auto">فاکتوری برای این سفارش یافت نشد.</p>
+
+  <div class="invoice-sheet" id="invoiceSheet">
+    <div class="invoice-head">
+      <div class="invoice-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 56" width="30" height="34"><path d="M24 2C10 10 6 24 6 34c0 12 8 20 18 20s18-8 18-20c0-10-4-24-18-32z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 14c-7 6-10 14-10 20 0 7 4.5 12 10 12s10-5 10-12c0-6-3-14-10-20z" fill="currentColor" opacity="0.15"/></svg>
+        </span>
+        <span class="brand-name">عطر مهراب</span>
+      </div>
+      <div class="invoice-meta">
+        <h1>فاکتور فروش</h1>
+        <p>شماره سفارش: <strong id="invNumber"></strong></p>
+        <p>تاریخ: <strong id="invDate"></strong></p>
+      </div>
+    </div>
+
+    <div class="invoice-parties">
+      <div>
+        <h3>مشتری</h3>
+        <p id="invCustName"></p>
+        <p id="invCustPhone" style="direction:ltr; text-align:right"></p>
+        <p id="invCustAddress"></p>
+      </div>
+      <div>
+        <h3>فروشنده</h3>
+        <p>عطر مهراب</p>
+        <p id="invSellerAddress"></p>
+        <p id="invSellerPhone" style="direction:ltr; text-align:right"></p>
+      </div>
+    </div>
+
+    <table class="invoice-table">
+      <thead>
+        <tr><th>ردیف</th><th>محصول</th><th>حجم</th><th>تعداد</th><th>قیمت واحد</th><th>جمع</th></tr>
+      </thead>
+      <tbody id="invItemsBody"></tbody>
+    </table>
+
+    <div class="invoice-totals" id="invTotals"></div>
+
+    <div class="invoice-footer">
+      <p id="invPaymentInfo"></p>
+      <p>از خرید شما در عطر مهراب سپاسگزاریم.</p>
+    </div>
+  </div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/site-settings.js"></script>
+  <script src="../js/orders-store.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-invoice.js"></script>
+</body>
+</html>

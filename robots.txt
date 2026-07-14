@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# User-specific / utility pages with no unique indexable content
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /wishlist.html
+Disallow: /track-order.html
+
+Sitemap: https://www.mehrab-parfum.ir/sitemap.xml

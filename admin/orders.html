@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سفارشات | پنل مدیریت مهراب</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="admin-topbar">
+    <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="باز کردن منو">☰</button>
+    <span class="admin-topbar-title">سفارشات</span>
+  </div>
+  <div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <h1 class="admin-page-title">سفارشات</h1>
+          <p class="admin-page-sub">لیست تمام سفارشات ثبت‌شده و سبدهای خرید رهاشده.</p>
+        </div>
+      </div>
+
+      <div class="admin-tabs" role="tablist">
+        <button type="button" class="admin-tab-btn is-active" data-tab="orders" role="tab">لیست سفارشات</button>
+        <button type="button" class="admin-tab-btn" data-tab="abandoned" role="tab">سبد خرید رهاشده</button>
+      </div>
+
+      <!-- ============ ORDERS ============ -->
+      <div class="admin-tab-panel is-active" id="panel-orders">
+        <div class="admin-stat-grid" id="orderStatGrid"></div>
+
+        <div class="admin-toolbar">
+          <select id="statusFilter">
+            <option value="all">همه وضعیت‌ها</option>
+            <option value="pending">تایید نشده</option>
+            <option value="preparing">در حال آماده‌سازی</option>
+            <option value="shipping">در حال ارسال</option>
+            <option value="delivered">تحویل داده شده</option>
+          </select>
+          <input type="search" id="searchOrders" placeholder="جستجو بر اساس کد سفارش یا شماره موبایل…" />
+        </div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>کد سفارش</th>
+                <th>تاریخ</th>
+                <th>مشتری</th>
+                <th>شماره تماس</th>
+                <th>اقلام</th>
+                <th>مبلغ کل</th>
+                <th>وضعیت سفارش</th>
+                <th>وضعیت پرداخت</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ ABANDONED CARTS ============ -->
+      <div class="admin-tab-panel" id="panel-abandoned">
+        <p class="admin-page-sub" style="margin-bottom:1rem">چون این فروشگاه بدون بک‌اند چندکاربره است، «سبد فعلی» همان سبد خرید مرورگر شماست؛ ردیف‌های دیگر نمونه‌های نمایشی از سبدهای رهاشده‌اند.</p>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>وضعیت</th><th>مشتری</th><th>اقلام</th><th>مبلغ</th><th>آخرین بروزرسانی</th></tr></thead>
+            <tbody id="abandonedTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="admin-toast" id="adminToast" role="status"></div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/orders-store.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-shell.js"></script>
+  <script src="js/admin-orders.js"></script>
+</body>
+</html>

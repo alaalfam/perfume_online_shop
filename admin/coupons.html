@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مدیریت کدهای تخفیف | پنل مدیریت مهراب</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="admin-topbar">
+    <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="باز کردن منو">☰</button>
+    <span class="admin-topbar-title">کدهای تخفیف</span>
+  </div>
+  <div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <h1 class="admin-page-title">مدیریت کدهای تخفیف</h1>
+          <p class="admin-page-sub">کدهای تخفیف قابل استفاده در سبد خرید فروشگاه.</p>
+        </div>
+        <button type="button" class="btn btn-solid" id="addCouponBtn">+ افزودن کد تخفیف</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>کد</th>
+              <th>نوع</th>
+              <th>مقدار</th>
+              <th>برچسب</th>
+              <th>وضعیت</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="couponsTableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div class="admin-modal-overlay" id="couponModalOverlay">
+    <div class="admin-modal">
+      <div class="admin-modal-head">
+        <h2 id="couponModalTitle">افزودن کد تخفیف</h2>
+        <button type="button" class="admin-modal-close" id="couponModalClose">×</button>
+      </div>
+
+      <form class="admin-form" id="couponForm">
+        <input type="hidden" id="couponOrigCode" />
+
+        <div class="admin-form-grid">
+          <div class="admin-field admin-field-full">
+            <label for="couponCode">کد تخفیف (لاتین)</label>
+            <input type="text" id="couponCode" style="direction:ltr;text-align:right" placeholder="MEHRAB10" required />
+          </div>
+
+          <div class="admin-field">
+            <label for="couponType">نوع تخفیف</label>
+            <select id="couponType">
+              <option value="percent">درصدی</option>
+              <option value="flat">مبلغ ثابت (تومان)</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label for="couponValue">مقدار</label>
+            <input type="number" id="couponValue" min="1" required />
+          </div>
+
+          <div class="admin-field admin-field-full">
+            <label for="couponLabel">برچسب نمایشی (در سبد خرید)</label>
+            <input type="text" id="couponLabel" placeholder="۱۰٪ تخفیف" required />
+          </div>
+
+          <div class="admin-field-full admin-checkbox-row">
+            <input type="checkbox" id="couponActive" checked />
+            <label for="couponActive" style="margin:0">کد فعال است</label>
+          </div>
+        </div>
+
+        <div class="admin-form-actions">
+          <button type="submit" class="btn btn-solid">ذخیره کد تخفیف</button>
+          <button type="button" class="btn btn-ghost" id="couponCancelBtn" style="color:var(--ink); border-color:var(--line)">انصراف</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="adminToast" role="status"></div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/coupons.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-shell.js"></script>
+  <script src="js/admin-coupons.js"></script>
+</body>
+</html>

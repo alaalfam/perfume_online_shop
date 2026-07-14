@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>پنل مدیریت | عطر مهراب</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <!-- ============ LOGIN (shown when not authenticated) ============ -->
+  <div class="admin-login-wrap" id="loginWrap">
+    <div class="admin-login-card">
+      <span class="admin-brand-mark" aria-hidden="true">◈</span>
+      <h1 class="admin-login-title">پنل مدیریت مهراب</h1>
+      <p class="admin-login-sub">برای مدیریت محتوای فروشگاه وارد شوید.</p>
+      <form class="admin-form" id="adminLoginForm" novalidate>
+        <div class="admin-field admin-field-full">
+          <label for="adminPassword">رمز عبور</label>
+          <input type="password" id="adminPassword" placeholder="رمز عبور پنل مدیریت" required />
+        </div>
+        <p class="auth-error" id="adminLoginError"></p>
+        <button type="submit" class="btn btn-solid btn-block">ورود به پنل</button>
+      </form>
+      <p class="admin-login-hint">این یک پنل نمایشی است. رمز عبور: <strong>mehrab-admin</strong></p>
+    </div>
+  </div>
+
+  <!-- ============ DASHBOARD (shown when authenticated) ============ -->
+  <div id="dashboardWrap" style="display:none">
+    <div class="admin-topbar">
+      <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="باز کردن منو">☰</button>
+      <span class="admin-topbar-title">داشبورد</span>
+    </div>
+    <div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
+
+    <div class="admin-shell">
+      <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+      <main class="admin-main">
+        <div class="admin-page-head">
+          <div>
+            <h1 class="admin-page-title">داشبورد مدیریت</h1>
+            <p class="admin-page-sub">نمای کلی از محتوای فروشگاه عطر مهراب.</p>
+          </div>
+        </div>
+
+        <div class="admin-stat-grid" id="statGrid"></div>
+
+        <div class="admin-card">
+          <h2>دسترسی سریع</h2>
+          <div class="admin-quicklinks">
+            <a class="admin-quicklink" href="orders.html">
+              <p class="admin-quicklink-title">بررسی سفارشات جدید</p>
+              <p class="admin-quicklink-desc">سفارشات تایید‌نشده را ببینید و وضعیت آن‌ها را به‌روزرسانی کنید.</p>
+            </a>
+            <a class="admin-quicklink" href="products.html">
+              <p class="admin-quicklink-title">افزودن محصول جدید</p>
+              <p class="admin-quicklink-desc">عطر جدید را با قیمت، نُت‌ها و موجودی به کالکشن اضافه کنید.</p>
+            </a>
+            <a class="admin-quicklink" href="coupons.html">
+              <p class="admin-quicklink-title">ساخت کد تخفیف</p>
+              <p class="admin-quicklink-desc">کد تخفیف درصدی یا مبلغ ثابت برای کمپین بعدی بسازید.</p>
+            </a>
+            <a class="admin-quicklink" href="settings.html">
+              <p class="admin-quicklink-title">تنظیم بنر و پرداخت</p>
+              <p class="admin-quicklink-desc">بنر صفحه اصلی، شیوه پرداخت و روش‌های ارسال را ویرایش کنید.</p>
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="adminToast" role="status"></div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/articles.js"></script>
+  <script src="../js/coupons.js"></script>
+  <script src="../js/categories.js"></script>
+  <script src="../js/site-settings.js"></script>
+  <script src="../js/orders-store.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

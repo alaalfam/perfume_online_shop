@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مدیریت دسته‌بندی‌ها | پنل مدیریت مهراب</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="admin-topbar">
+    <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="باز کردن منو">☰</button>
+    <span class="admin-topbar-title">دسته‌بندی‌ها</span>
+  </div>
+  <div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <h1 class="admin-page-title">مدیریت دسته‌بندی‌ها</h1>
+          <p class="admin-page-sub">دسته‌های رایحه و جنسیت که در فروشگاه و دراپ‌داون منو نمایش داده می‌شوند.</p>
+        </div>
+        <button type="button" class="btn btn-solid" id="addCategoryBtn">+ افزودن دسته‌بندی</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>آیکون</th>
+              <th>عنوان</th>
+              <th>نوع</th>
+              <th>کلید</th>
+              <th>عنوان صفحه</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="categoriesTableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div class="admin-modal-overlay" id="categoryModalOverlay">
+    <div class="admin-modal">
+      <div class="admin-modal-head">
+        <h2 id="categoryModalTitle">افزودن دسته‌بندی</h2>
+        <button type="button" class="admin-modal-close" id="categoryModalClose">×</button>
+      </div>
+
+      <form class="admin-form" id="categoryForm">
+        <input type="hidden" id="categoryOrigType" />
+        <input type="hidden" id="categoryOrigKey" />
+
+        <div class="admin-form-grid">
+          <div class="admin-field">
+            <label for="categoryType">نوع دسته‌بندی</label>
+            <select id="categoryType" required>
+              <option value="family">خانواده رایحه</option>
+              <option value="gender">جنسیت</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label for="categoryIcon">آیکون (یک نویسه)</label>
+            <input type="text" id="categoryIcon" maxlength="2" placeholder="◆" required />
+          </div>
+
+          <div class="admin-field">
+            <label for="categoryKey">کلید انگلیسی (مثال: oud)</label>
+            <input type="text" id="categoryKey" placeholder="در صورت خالی بودن خودکار ساخته می‌شود" />
+          </div>
+          <div class="admin-field">
+            <label for="categoryChipLabel">برچسب کوتاه (روی فیلترها)</label>
+            <input type="text" id="categoryChipLabel" required />
+          </div>
+
+          <div class="admin-field admin-field-full">
+            <label for="categoryPageTitle">عنوان صفحه دسته‌بندی</label>
+            <input type="text" id="categoryPageTitle" required />
+          </div>
+          <div class="admin-field admin-field-full">
+            <label for="categoryPageDesc">توضیح صفحه دسته‌بندی</label>
+            <textarea id="categoryPageDesc" rows="2" required></textarea>
+          </div>
+        </div>
+
+        <div class="admin-form-actions">
+          <button type="submit" class="btn btn-solid">ذخیره دسته‌بندی</button>
+          <button type="button" class="btn btn-ghost" id="categoryCancelBtn" style="color:var(--ink); border-color:var(--line)">انصراف</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="adminToast" role="status"></div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/categories.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-shell.js"></script>
+  <script src="js/admin-categories.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>صفحات و منو | پنل مدیریت مهراب</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="admin-topbar">
+    <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="باز کردن منو">☰</button>
+    <span class="admin-topbar-title">صفحات و منو</span>
+  </div>
+  <div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <h1 class="admin-page-title">صفحات و منو</h1>
+          <p class="admin-page-sub">محتوای صفحات ثابت، صفحات سفارشی، و نمایش گزینه‌ها در نوار ناوبری.</p>
+        </div>
+      </div>
+
+      <div class="admin-tabs" role="tablist">
+        <button type="button" class="admin-tab-btn is-active" data-tab="nav" role="tab">نوار ناوبری (تب بار)</button>
+        <button type="button" class="admin-tab-btn" data-tab="content" role="tab">محتوای صفحات</button>
+        <button type="button" class="admin-tab-btn" data-tab="custom" role="tab">صفحات سفارشی</button>
+      </div>
+
+      <!-- ============ NAV VISIBILITY / ORDER ============ -->
+      <div class="admin-tab-panel is-active" id="panel-nav">
+        <div class="admin-card">
+          <h2>گزینه‌های نوار ناوبری</h2>
+          <p class="admin-page-sub" style="margin-bottom:1rem">با کلید نمایش/عدم‌نمایش، هر گزینه را در تب بار سایت فعال یا غیرفعال کنید. با فلش‌ها ترتیب را تغییر دهید.</p>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>عنوان</th><th>لینک</th><th>ترتیب</th><th>نمایش در تب بار</th></tr></thead>
+              <tbody id="navTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ PAGE CONTENT ============ -->
+      <div class="admin-tab-panel" id="panel-content">
+        <div class="admin-card">
+          <h2>صفحه «درباره ما»</h2>
+          <form class="admin-form" id="aboutContentForm">
+            <div class="admin-field">
+              <label for="aboutHeadingInput">عنوان اصلی</label>
+              <input type="text" id="aboutHeadingInput" required />
+            </div>
+            <div class="admin-field">
+              <label for="aboutParagraphsInput">متن — هر پاراگراف در یک خط جدید</label>
+              <textarea id="aboutParagraphsInput" rows="6" required></textarea>
+            </div>
+            <div class="admin-form-actions">
+              <button type="submit" class="btn btn-solid">ذخیره محتوای درباره ما</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="admin-card">
+          <h2>صفحه «ارتباط با ما»</h2>
+          <form class="admin-form" id="contactContentForm">
+            <div class="admin-form-grid">
+              <div class="admin-field"><label for="contactPhoneInput">تلفن پشتیبانی</label><input type="text" id="contactPhoneInput" required /></div>
+              <div class="admin-field"><label for="contactEmailInput">ایمیل</label><input type="email" id="contactEmailInput" required /></div>
+              <div class="admin-field"><label for="contactAddressInput">آدرس</label><input type="text" id="contactAddressInput" required /></div>
+              <div class="admin-field"><label for="contactHoursInput">ساعات پاسخگویی</label><input type="text" id="contactHoursInput" required /></div>
+            </div>
+            <div class="admin-form-actions">
+              <button type="submit" class="btn btn-solid">ذخیره اطلاعات تماس</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ============ CUSTOM PAGES ============ -->
+      <div class="admin-tab-panel" id="panel-custom">
+        <div class="admin-page-head" style="margin-bottom:1rem">
+          <p class="admin-page-sub" style="margin:0">صفحات دلخواهی که خودتان به سایت اضافه می‌کنید (مثل «شرایط ارسال» یا «حریم خصوصی»).</p>
+          <button type="button" class="btn btn-solid" id="addPageBtn">+ افزودن صفحه</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>عنوان</th><th>آدرس</th><th>در تب بار</th><th></th></tr></thead>
+            <tbody id="customPagesTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="admin-modal-overlay" id="pageModalOverlay">
+    <div class="admin-modal">
+      <div class="admin-modal-head">
+        <h2 id="pageModalTitle">افزودن صفحه</h2>
+        <button type="button" class="admin-modal-close" id="pageModalClose">×</button>
+      </div>
+      <form class="admin-form" id="customPageForm">
+        <input type="hidden" id="pageOrigSlug" />
+        <div class="admin-field">
+          <label for="pageTitleInput">عنوان صفحه</label>
+          <input type="text" id="pageTitleInput" required />
+        </div>
+
+        <div class="admin-form-grid">
+          <div class="admin-field admin-field-full">
+            <label for="pageSeoTitleInput">عنوان سئو (اختیاری — خالی بماند یعنی از عنوان صفحه استفاده شود)</label>
+            <input type="text" id="pageSeoTitleInput" />
+          </div>
+          <div class="admin-field admin-field-full">
+            <label for="pageSeoDescInput">توضیحات متا سئو (اختیاری)</label>
+            <textarea id="pageSeoDescInput" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-field">
+          <label for="pageBodyInput">متن ساده — هر پاراگراف در یک خط جدید</label>
+          <textarea id="pageBodyInput" rows="5"></textarea>
+        </div>
+
+        <div class="admin-card" style="margin:0; padding:1rem; background:#f4efe2">
+          <h2 style="font-size:0.95rem">کد سفارشی (اختیاری)</h2>
+          <p class="admin-field-hint" style="margin-bottom:0.9rem">در صورت پر بودن کد HTML، این صفحه به‌جای متن ساده بالا، با این کد نمایش داده می‌شود. فایل را بارگزاری کنید یا مستقیم در کادر بنویسید/پیست کنید.</p>
+
+          <div class="admin-form-grid">
+            <div class="admin-field"><label for="pageHtmlFile">بارگزاری فایل HTML</label><input type="file" id="pageHtmlFile" accept=".html,text/html" /></div>
+            <div class="admin-field"><label for="pageCssFile">بارگزاری فایل CSS</label><input type="file" id="pageCssFile" accept=".css,text/css" /></div>
+          </div>
+          <div class="admin-field">
+            <label for="pageHtmlInput">کد HTML</label>
+            <textarea id="pageHtmlInput" rows="4" style="direction:ltr;text-align:left;font-family:monospace;font-size:0.8rem"></textarea>
+          </div>
+          <div class="admin-field">
+            <label for="pageCssInput">کد CSS</label>
+            <textarea id="pageCssInput" rows="3" style="direction:ltr;text-align:left;font-family:monospace;font-size:0.8rem"></textarea>
+          </div>
+          <div class="admin-field">
+            <label for="pageJsFile">بارگزاری فایل JS</label>
+            <input type="file" id="pageJsFile" accept=".js,text/javascript" />
+          </div>
+          <div class="admin-field">
+            <label for="pageJsInput">کد JavaScript</label>
+            <textarea id="pageJsInput" rows="3" style="direction:ltr;text-align:left;font-family:monospace;font-size:0.8rem"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-checkbox-row">
+          <input type="checkbox" id="pageShowInNav" />
+          <label for="pageShowInNav" style="margin:0">نمایش این صفحه در نوار ناوبری</label>
+        </div>
+        <div class="admin-form-actions">
+          <button type="submit" class="btn btn-solid">ذخیره صفحه</button>
+          <button type="button" class="btn btn-ghost" id="pageCancelBtn" style="color:var(--ink); border-color:var(--line)">انصراف</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="adminToast" role="status"></div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/site-settings.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-shell.js"></script>
+  <script src="js/admin-pages.js"></script>
+</body>
+</html>

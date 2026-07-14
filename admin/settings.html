@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>بنر، پرداخت و ارسال | پنل مدیریت مهراب</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="admin-topbar">
+    <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="باز کردن منو">☰</button>
+    <span class="admin-topbar-title">تنظیمات فروشگاه</span>
+  </div>
+  <div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <h1 class="admin-page-title">بنر، پرداخت و ارسال</h1>
+          <p class="admin-page-sub">تنظیمات کلی فروشگاه که روی سایت عمومی نمایش داده می‌شود.</p>
+        </div>
+      </div>
+
+      <div class="admin-tabs" role="tablist">
+        <button type="button" class="admin-tab-btn is-active" data-tab="banner" role="tab">بنر سایت</button>
+        <button type="button" class="admin-tab-btn" data-tab="payment" role="tab">پرداخت</button>
+        <button type="button" class="admin-tab-btn" data-tab="shipping" role="tab">شیوه‌های ارسال</button>
+        <button type="button" class="admin-tab-btn" data-tab="trust" role="tab">مجوزها و نماد الکترونیک</button>
+      </div>
+
+      <!-- ============ BANNER ============ -->
+      <div class="admin-tab-panel is-active" id="panel-banner">
+        <div class="admin-card">
+          <h2>بنر صفحه اصلی</h2>
+          <form class="admin-form" id="bannerForm">
+            <div class="admin-form-grid">
+              <div class="admin-field admin-field-full"><label for="bannerEyebrowInput">عنوان کوچک بالای بنر</label><input type="text" id="bannerEyebrowInput" required /></div>
+              <div class="admin-field"><label for="bannerTitle1Input">خط اول عنوان</label><input type="text" id="bannerTitle1Input" required /></div>
+              <div class="admin-field"><label for="bannerTitle2Input">خط دوم عنوان (طلایی)</label><input type="text" id="bannerTitle2Input" required /></div>
+              <div class="admin-field admin-field-full"><label for="bannerLedeInput">توضیح بنر</label><textarea id="bannerLedeInput" rows="2" required></textarea></div>
+              <div class="admin-field"><label for="bannerCtaLabelInput">متن دکمه اول</label><input type="text" id="bannerCtaLabelInput" required /></div>
+              <div class="admin-field"><label for="bannerCtaHrefInput">لینک دکمه اول</label><input type="text" id="bannerCtaHrefInput" required /></div>
+              <div class="admin-field"><label for="bannerSecondaryLabelInput">متن دکمه دوم</label><input type="text" id="bannerSecondaryLabelInput" required /></div>
+              <div class="admin-field"><label for="bannerSecondaryHrefInput">لینک دکمه دوم</label><input type="text" id="bannerSecondaryHrefInput" required /></div>
+              <div class="admin-field"><label for="bannerTintInput">رنگ بطری نمایشی</label><input type="color" id="bannerTintInput" /></div>
+            </div>
+            <div class="admin-form-actions">
+              <button type="submit" class="btn btn-solid">ذخیره بنر</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ============ PAYMENT ============ -->
+      <div class="admin-tab-panel" id="panel-payment">
+        <div class="admin-card">
+          <h2>شیوه پرداخت</h2>
+          <form class="admin-form" id="paymentForm">
+            <div class="admin-field">
+              <label for="paymentMethodSelect">روش پرداخت فعال در سبد خرید</label>
+              <select id="paymentMethodSelect">
+                <option value="gateway">درگاه پرداخت آنلاین</option>
+                <option value="card">کارت‌به‌کارت (نمایش شماره کارت)</option>
+              </select>
+              <p class="admin-field-hint">در صورت انتخاب «کارت‌به‌کارت»، به‌جای دکمه درگاه، شماره کارت و نام بانک به مشتری نمایش داده می‌شود.</p>
+            </div>
+
+            <div class="admin-form-grid">
+              <div class="admin-field admin-field-full">
+                <label for="gatewayNameInput">نام درگاه پرداخت</label>
+                <input type="text" id="gatewayNameInput" />
+              </div>
+              <div class="admin-field"><label for="bankNameInput">نام بانک</label><input type="text" id="bankNameInput" /></div>
+              <div class="admin-field"><label for="cardHolderInput">نام صاحب حساب</label><input type="text" id="cardHolderInput" /></div>
+              <div class="admin-field admin-field-full"><label for="cardNumberInput">شماره کارت</label><input type="text" id="cardNumberInput" style="direction:ltr;text-align:right" /></div>
+              <div class="admin-field admin-field-full"><label for="ibanInput">شماره شبا</label><input type="text" id="ibanInput" style="direction:ltr;text-align:right" /></div>
+            </div>
+
+            <div class="admin-form-actions">
+              <button type="submit" class="btn btn-solid">ذخیره تنظیمات پرداخت</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ============ SHIPPING ============ -->
+      <div class="admin-tab-panel" id="panel-shipping">
+        <div class="admin-page-head" style="margin-bottom:1rem">
+          <p class="admin-page-sub" style="margin:0">روش‌های ارسالی که هنگام تسویه‌حساب به مشتری نمایش داده می‌شود.</p>
+          <button type="button" class="btn btn-solid" id="addShippingBtn">+ افزودن روش ارسال</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>نام</th><th>هزینه</th><th>زمان تحویل</th><th>فعال</th><th></th></tr></thead>
+            <tbody id="shippingTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ TRUST BADGES ============ -->
+      <div class="admin-tab-panel" id="panel-trust">
+        <div class="admin-page-head" style="margin-bottom:1rem">
+          <p class="admin-page-sub" style="margin:0">نمادها فقط زمانی در فوتر سایت نمایش داده می‌شوند که «فعال» باشند — برای مجوزهایی که هنوز دریافت نکرده‌اید، غیرفعال نگه دارید.</p>
+          <button type="button" class="btn btn-solid" id="addTrustBtn">+ افزودن مجوز/نماد</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>نام نماد</th><th>یادداشت</th><th>فعال (نمایش در سایت)</th><th></th></tr></thead>
+            <tbody id="trustTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Shipping modal -->
+  <div class="admin-modal-overlay" id="shippingModalOverlay">
+    <div class="admin-modal">
+      <div class="admin-modal-head"><h2 id="shippingModalTitle">افزودن روش ارسال</h2><button type="button" class="admin-modal-close" id="shippingModalClose">×</button></div>
+      <form class="admin-form" id="shippingForm">
+        <input type="hidden" id="shippingOrigId" />
+        <div class="admin-field"><label for="shippingNameInput">نام روش ارسال</label><input type="text" id="shippingNameInput" required /></div>
+        <div class="admin-form-grid">
+          <div class="admin-field"><label for="shippingPriceInput">هزینه (تومان — ۰ یعنی رایگان)</label><input type="number" id="shippingPriceInput" min="0" required /></div>
+          <div class="admin-field"><label for="shippingEtaInput">زمان تحویل</label><input type="text" id="shippingEtaInput" required /></div>
+        </div>
+        <div class="admin-checkbox-row"><input type="checkbox" id="shippingActiveInput" checked /><label for="shippingActiveInput" style="margin:0">فعال</label></div>
+        <div class="admin-form-actions">
+          <button type="submit" class="btn btn-solid">ذخیره</button>
+          <button type="button" class="btn btn-ghost" id="shippingCancelBtn" style="color:var(--ink); border-color:var(--line)">انصراف</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Trust badge modal -->
+  <div class="admin-modal-overlay" id="trustModalOverlay">
+    <div class="admin-modal">
+      <div class="admin-modal-head"><h2 id="trustModalTitle">افزودن مجوز/نماد</h2><button type="button" class="admin-modal-close" id="trustModalClose">×</button></div>
+      <form class="admin-form" id="trustForm">
+        <input type="hidden" id="trustOrigId" />
+        <div class="admin-field"><label for="trustNameInput">نام نماد/مجوز</label><input type="text" id="trustNameInput" required /></div>
+        <div class="admin-field"><label for="trustNoteInput">یادداشت (اختیاری)</label><input type="text" id="trustNoteInput" placeholder="مثلاً شماره مجوز" /></div>
+        <div class="admin-checkbox-row"><input type="checkbox" id="trustActiveInput" /><label for="trustActiveInput" style="margin:0">فعال — در فوتر سایت نمایش داده شود</label></div>
+        <div class="admin-form-actions">
+          <button type="submit" class="btn btn-solid">ذخیره</button>
+          <button type="button" class="btn btn-ghost" id="trustCancelBtn" style="color:var(--ink); border-color:var(--line)">انصراف</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="adminToast" role="status"></div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/site-settings.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-shell.js"></script>
+  <script src="js/admin-settings.js"></script>
+</body>
+</html>
