@@ -14,6 +14,7 @@
     { href: "index.html", label: "داشبورد", icon: "▦" },
     { href: "products.html", label: "محصولات", icon: "◆" },
     { href: "orders.html", label: "سفارشات", icon: "⛁" },
+    { href: "customers.html", label: "مشتریان", icon: "☺" },
     { href: "categories.html", label: "دسته‌بندی‌ها", icon: "▤" },
     { href: "coupons.html", label: "کدهای تخفیف", icon: "٪" },
     { href: "articles.html", label: "مقالات", icon: "✎" },
