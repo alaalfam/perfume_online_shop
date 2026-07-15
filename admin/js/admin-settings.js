@@ -93,10 +93,10 @@
     tbody.innerHTML = list.map(function (m) {
       return (
         "<tr>" +
-          "<td>" + m.name + "</td>" +
-          "<td>" + (m.price > 0 ? m.price.toLocaleString("fa-IR") + " تومان" : "رایگان") + "</td>" +
-          "<td>" + m.etaDays + "</td>" +
-          "<td>" + (m.active ? '<span class="admin-badge is-on">فعال</span>' : '<span class="admin-badge is-off">غیرفعال</span>') + "</td>" +
+          "<td data-label='نام'>" + m.name + "</td>" +
+          "<td data-label='هزینه'>" + (m.price > 0 ? m.price.toLocaleString("fa-IR") + " تومان" : "رایگان") + "</td>" +
+          "<td data-label='زمان تحویل'>" + m.etaDays + "</td>" +
+          "<td data-label='فعال'>" + (m.active ? '<span class="admin-badge is-on">فعال</span>' : '<span class="admin-badge is-off">غیرفعال</span>') + "</td>" +
           '<td><div class="admin-table-actions">' +
             '<button type="button" class="admin-icon-btn" data-edit-shipping="' + m.id + '" aria-label="ویرایش">✎</button>' +
             '<button type="button" class="admin-icon-btn is-danger" data-delete-shipping="' + m.id + '" aria-label="حذف">🗑</button>' +
@@ -186,9 +186,9 @@
     tbody.innerHTML = list.map(function (b) {
       return (
         "<tr>" +
-          "<td>" + b.name + "</td>" +
-          "<td style='color:var(--ink-soft)'>" + (b.note || "—") + "</td>" +
-          "<td>" + (b.active ? '<span class="admin-badge is-on">فعال</span>' : '<span class="admin-badge is-off">غیرفعال</span>') + "</td>" +
+          "<td data-label='نام نماد'>" + b.name + "</td>" +
+          "<td data-label='یادداشت' style='color:var(--ink-soft)'>" + (b.note || "—") + "</td>" +
+          "<td data-label='فعال'>" + (b.active ? '<span class="admin-badge is-on">فعال</span>' : '<span class="admin-badge is-off">غیرفعال</span>') + "</td>" +
           '<td><div class="admin-table-actions">' +
             '<button type="button" class="admin-icon-btn" data-edit-trust="' + b.id + '" aria-label="ویرایش">✎</button>' +
             '<button type="button" class="admin-icon-btn is-danger" data-delete-trust="' + b.id + '" aria-label="حذف">🗑</button>' +

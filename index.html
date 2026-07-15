@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Estedad:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
   <link rel="icon" type="image/png" href="assets/logo.png" />
@@ -70,7 +70,7 @@
         "publisher": { "@id": "https://www.mehrab-parfum.ir/#organization" },
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://www.mehrab-parfum.ir/index.html?q={search_term_string}#collection",
+          "target": "https://www.mehrab-parfum.ir/products.html?q={search_term_string}",
           "query-input": "required name=search_term_string"
         }
       }
@@ -112,7 +112,7 @@
       </a>
 
       <nav class="primary-nav" id="primaryNav" aria-label="ناوبری اصلی">
-        <a href="index.html#collection" data-navkey="shop">فروشگاه</a>
+        <a href="products.html" data-navkey="shop">فروشگاه</a>
 
         <div class="nav-item has-dropdown" data-navkey="categories">
           <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-haspopup="true">
@@ -182,7 +182,7 @@
             هشت ترکیب اصیل، از عود سلطانی تا کهکشان کهربا — دست‌ساز، با اسانس اروپایی و امضایی کاملاً ایرانی.
           </p>
           <div class="hero-actions reveal-load" style="--d:.7s">
-            <a class="btn btn-solid" href="#collection" id="bannerCta">مشاهده فروشگاه</a>
+            <a class="btn btn-solid" href="products.html" id="bannerCta">مشاهده فروشگاه</a>
             <a class="btn btn-ghost" href="discounts.html" id="bannerSecondaryCta">تخفیف‌های ویژه</a>
           </div>
         </div>
@@ -224,7 +224,7 @@
           <p class="eyebrow">تازه به کالکشن اضافه شد</p>
           <h2 class="section-title" id="newestTitle">جدیدترین محصولات</h2>
         </div>
-        <div class="product-grid" id="newestGrid"></div>
+        <div class="product-grid product-grid--scroll" id="newestGrid"></div>
       </div>
     </section>
 
@@ -239,48 +239,24 @@
           </div>
           <a class="btn btn-ghost" href="discounts.html">مشاهده همه تخفیف‌ها</a>
         </div>
-        <div class="product-grid" id="discountsPreviewGrid"></div>
+        <div class="product-grid product-grid--scroll" id="discountsPreviewGrid"></div>
       </div>
     </section>
 
     <!-- ============ COLLECTION ============ -->
     <section class="collection section" id="collection" aria-labelledby="collectionTitle">
       <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">فروشگاه</p>
-          <h2 class="section-title" id="collectionTitle">کالکشن مهراب</h2>
-          <p class="section-lede">جستجو کنید یا با فیلترهای رایحه و جنسیت، محصول مناسب خود را پیدا کنید.</p>
+        <div class="section-head reveal"
+          style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1rem">
+          <div>
+            <p class="eyebrow">فروشگاه</p>
+            <h2 class="section-title" id="collectionTitle">کالکشن مهراب</h2>
+            <p class="section-lede">نگاهی به کالکشن ما بیندازید — برای جستجو و فیلتر کامل، همه محصولات را ببینید.</p>
+          </div>
+          <a class="btn btn-solid" href="products.html">مشاهده همه محصولات</a>
         </div>
 
-        <div class="shop-controls reveal">
-          <label class="search-bar">
-            <span class="sr-only">جستجوی محصول</span>
-            <input type="search" id="searchInput" placeholder="جستجو در محصولات… مثلاً «عود» یا «زعفران»" />
-            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"
-              aria-hidden="true">
-              <circle cx="11" cy="11" r="7" />
-              <path d="M20 20l-4.3-4.3" />
-            </svg>
-          </label>
-
-          <label>
-            <span class="sr-only">مرتب‌سازی</span>
-            <select class="sort-select" id="sortSelect">
-              <option value="default">مرتب‌سازی: پیش‌فرض</option>
-              <option value="newest">جدیدترین</option>
-              <option value="price-asc">ارزان‌ترین</option>
-              <option value="price-desc">گران‌ترین</option>
-              <option value="discount">بیشترین تخفیف</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="filter-row reveal" id="familyChips" role="group" aria-label="دسته‌بندی رایحه"></div>
-
-        <div class="filter-row reveal" id="genderChips" role="group" aria-label="دسته‌بندی جنسیت"></div>
-
-        <div class="product-grid" id="productGrid"></div>
-        <p class="no-results" id="noResults">محصولی با این مشخصات یافت نشد. عبارت جستجو یا فیلترها را تغییر دهید.</p>
+        <div class="product-grid product-grid--scroll" id="collectionPreviewGrid"></div>
       </div>
     </section>
 
@@ -367,8 +343,8 @@
       </div>
       <nav class="footer-col" aria-label="فروشگاه">
         <h3>فروشگاه</h3>
-        <a href="index.html#collection">همه محصولات</a>
-        <a href="index.html?sort=newest#collection">جدیدترین‌ها</a>
+        <a href="products.html">همه محصولات</a>
+        <a href="products.html?sort=newest">جدیدترین‌ها</a>
         <a href="discounts.html">تخفیف‌دارها</a>
       </nav>
       <nav class="footer-col" aria-label="خدمات مشتریان">

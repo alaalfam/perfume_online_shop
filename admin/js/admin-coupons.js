@@ -31,11 +31,11 @@
     dom.tbody.innerHTML = list.map(function (c) {
       return (
         "<tr>" +
-          "<td style='direction:ltr;text-align:right;font-weight:700'>" + c.code + "</td>" +
-          "<td>" + (c.type === "percent" ? "درصدی" : "مبلغ ثابت") + "</td>" +
-          "<td>" + formatValue(c) + "</td>" +
-          "<td>" + c.label + "</td>" +
-          "<td>" + (c.active ? '<span class="admin-badge is-on">فعال</span>' : '<span class="admin-badge is-off">غیرفعال</span>') + "</td>" +
+          "<td data-label='کد' style='direction:ltr;text-align:right;font-weight:700'>" + c.code + "</td>" +
+          "<td data-label='نوع'>" + (c.type === "percent" ? "درصدی" : "مبلغ ثابت") + "</td>" +
+          "<td data-label='مقدار'>" + formatValue(c) + "</td>" +
+          "<td data-label='برچسب'>" + c.label + "</td>" +
+          "<td data-label='وضعیت'>" + (c.active ? '<span class="admin-badge is-on">فعال</span>' : '<span class="admin-badge is-off">غیرفعال</span>') + "</td>" +
           '<td><div class="admin-table-actions">' +
             '<button type="button" class="admin-icon-btn" data-edit="' + c.code + '" aria-label="ویرایش">✎</button>' +
             '<button type="button" class="admin-icon-btn is-danger" data-delete="' + c.code + '" aria-label="حذف">🗑</button>' +

@@ -38,13 +38,13 @@
     dom.tbody.innerHTML = list.map(function (c) {
       return (
         "<tr>" +
-          "<td style='direction:ltr;text-align:right'>" + c.phone + "</td>" +
-          "<td>" + c.firstName + "</td>" +
-          "<td>" + c.lastName + "</td>" +
-          "<td>" + formatDate(c.joinDate) + "</td>" +
-          "<td>" + formatDate(c.lastLogin) + "</td>" +
-          "<td>" + (REFERRER_LABEL[c.referrer] || c.referrer || "—") + "</td>" +
-          "<td>" + c.address + "</td>" +
+          "<td data-label='شماره تماس' style='direction:ltr;text-align:right'>" + c.phone + "</td>" +
+          "<td data-label='نام'>" + c.firstName + "</td>" +
+          "<td data-label='نام خانوادگی'>" + c.lastName + "</td>" +
+          "<td data-label='تاریخ عضویت'>" + formatDate(c.joinDate) + "</td>" +
+          "<td data-label='آخرین ورود'>" + formatDate(c.lastLogin) + "</td>" +
+          "<td data-label='ارجاع‌دهنده'>" + (REFERRER_LABEL[c.referrer] || c.referrer || "—") + "</td>" +
+          "<td data-label='آدرس'>" + c.address + "</td>" +
         "</tr>"
       );
     }).join("");

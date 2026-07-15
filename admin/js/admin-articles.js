@@ -33,10 +33,10 @@
     dom.tbody.innerHTML = list.map(function (a) {
       return (
         "<tr>" +
-          "<td>" + a.title + "</td>" +
-          "<td>" + a.category + "</td>" +
-          "<td>" + a.date + "</td>" +
-          "<td>" + a.readMinutes.toLocaleString("fa-IR") + " دقیقه</td>" +
+          "<td data-label='عنوان'>" + a.title + "</td>" +
+          "<td data-label='دسته‌بندی'>" + a.category + "</td>" +
+          "<td data-label='تاریخ'>" + a.date + "</td>" +
+          "<td data-label='زمان مطالعه'>" + a.readMinutes.toLocaleString("fa-IR") + " دقیقه</td>" +
           '<td><div class="admin-table-actions">' +
             '<button type="button" class="admin-icon-btn" data-edit="' + a.slug + '" aria-label="ویرایش">✎</button>' +
             '<button type="button" class="admin-icon-btn is-danger" data-delete="' + a.slug + '" aria-label="حذف">🗑</button>' +

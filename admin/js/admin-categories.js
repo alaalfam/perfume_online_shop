@@ -29,11 +29,11 @@
     dom.tbody.innerHTML = list.map(function (c) {
       return (
         "<tr>" +
-          "<td style='font-size:1.2rem'>" + c.icon + "</td>" +
-          "<td>" + c.chipLabel + "</td>" +
-          "<td>" + (TYPE_LABEL[c.type] || c.type) + "</td>" +
-          "<td style='direction:ltr;text-align:right'>" + c.key + "</td>" +
-          "<td>" + c.pageTitle + "</td>" +
+          "<td data-label='آیکون' style='font-size:1.2rem'>" + c.icon + "</td>" +
+          "<td data-label='عنوان'>" + c.chipLabel + "</td>" +
+          "<td data-label='نوع'>" + (TYPE_LABEL[c.type] || c.type) + "</td>" +
+          "<td data-label='کلید' style='direction:ltr;text-align:right'>" + c.key + "</td>" +
+          "<td data-label='عنوان صفحه'>" + c.pageTitle + "</td>" +
           '<td><div class="admin-table-actions">' +
             '<button type="button" class="admin-icon-btn" data-edit="' + c.type + '|' + c.key + '" aria-label="ویرایش">✎</button>' +
             '<button type="button" class="admin-icon-btn is-danger" data-delete="' + c.type + '|' + c.key + '" aria-label="حذف">🗑</button>' +

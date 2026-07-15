@@ -106,7 +106,7 @@ body { background: #f4efe2; opacity: 1; }
 }
 
 /* ---------- 4. Data table ---------- */
-.admin-table-wrap { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: auto; }
+.admin-table-wrap { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: auto; -webkit-overflow-scrolling: touch; }
 .admin-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 640px; }
 .admin-table th, .admin-table td { padding: 0.85rem 1rem; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
 .admin-table th { font-size: 0.76rem; color: var(--ink-soft); font-weight: 700; background: #f4efe2; }
@@ -174,7 +174,7 @@ body { background: #f4efe2; opacity: 1; }
 .admin-modal-close { font-size: 1.6rem; line-height: 1; padding: 0.2rem 0.5rem; color: var(--ink-soft); }
 
 /* ---------- 7. Tabs (settings.html) ---------- */
-.admin-tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin-bottom: 1.6rem; overflow-x: auto; }
+.admin-tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin-bottom: 1.6rem; overflow-x: auto; overflow-y: hidden; }
 .admin-tab-btn {
   padding: 0.8rem 1.2rem; font-size: 0.86rem; font-weight: 600; color: var(--ink-soft);
   border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.25s, border-color 0.25s;
@@ -224,6 +224,40 @@ body { background: #f4efe2; opacity: 1; }
   .admin-stat-grid { grid-template-columns: 1fr; }
   .admin-toolbar { flex-direction: column; align-items: stretch; }
   .admin-toolbar input[type="search"] { min-width: 0; }
+}
+
+/* Below 700px a wide data table stops fitting a phone screen even
+   with horizontal scroll, so rows switch to stacked cards: each row
+   becomes a card, each cell becomes a "label: value" line using the
+   column header (via data-label on the <td>, set by the admin-*.js
+   renderers) instead of the (now hidden) table header. */
+@media (max-width: 700px) {
+  .admin-table-wrap { overflow: visible; border: none; background: none; }
+  .admin-table { display: block; min-width: 0; }
+  .admin-table thead {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+  .admin-table tbody { display: block; }
+  .admin-table tr {
+    display: block; background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 0.2rem 1rem; margin-bottom: 0.8rem;
+  }
+  .admin-table tr:last-child { margin-bottom: 0; }
+  .admin-table td {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.65rem 0; border-bottom: 1px dashed var(--line); white-space: normal; text-align: left;
+  }
+  .admin-table td:last-child { border-bottom: none; }
+  .admin-table td::before { content: attr(data-label); font-size: 0.74rem; font-weight: 700; color: var(--ink-soft); flex-shrink: 0; }
+  .admin-empty-row td { display: block; text-align: center; }
+  .admin-empty-row td::before { content: none; }
+
+  /* .invoice-parties (seller/buyer blocks) had no mobile override at
+     all and stayed 2-up, cramming both address blocks on a phone. */
+  .invoice-parties { grid-template-columns: 1fr; }
+  .invoice-head { flex-wrap: wrap; }
+  .invoice-meta { text-align: right; }
 }
 
 /* ============================================================

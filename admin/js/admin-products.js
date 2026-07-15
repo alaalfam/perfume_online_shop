@@ -49,13 +49,13 @@
       return (
         "<tr>" +
           '<td><span class="admin-table-thumb" style="--tint:' + p.tint + '"></span></td>' +
-          "<td>" + p.name + "</td>" +
-          "<td>" + p.familyLabel + "</td>" +
-          "<td>" + p.gender + "</td>" +
-          "<td>" + catalog.formatToman(base) + "</td>" +
-          "<td>" + p.stock.toLocaleString("fa-IR") + "</td>" +
-          "<td>" + (p.discount ? '<span class="admin-badge is-on">' + p.discount + "٪</span>" : '<span class="admin-badge is-off">ندارد</span>') + "</td>" +
-          "<td>" + (p.isNew ? '<span class="admin-badge is-on">بله</span>' : '<span class="admin-badge is-off">خیر</span>') + "</td>" +
+          '<td data-label="نام">' + p.name + "</td>" +
+          '<td data-label="خانواده">' + p.familyLabel + "</td>" +
+          '<td data-label="جنسیت">' + p.gender + "</td>" +
+          '<td data-label="قیمت پایه">' + catalog.formatToman(base) + "</td>" +
+          '<td data-label="موجودی">' + p.stock.toLocaleString("fa-IR") + "</td>" +
+          '<td data-label="تخفیف">' + (p.discount ? '<span class="admin-badge is-on">' + p.discount + "٪</span>" : '<span class="admin-badge is-off">ندارد</span>') + "</td>" +
+          '<td data-label="جدید">' + (p.isNew ? '<span class="admin-badge is-on">بله</span>' : '<span class="admin-badge is-off">خیر</span>') + "</td>" +
           '<td><div class="admin-table-actions">' +
             '<button type="button" class="admin-icon-btn" data-edit="' + p.id + '" aria-label="ویرایش">✎</button>' +
             '<button type="button" class="admin-icon-btn is-danger" data-delete="' + p.id + '" aria-label="حذف">🗑</button>' +

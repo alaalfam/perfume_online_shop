@@ -29,13 +29,13 @@
     tbody.innerHTML = items.map(function (item, i) {
       return (
         "<tr>" +
-          "<td>" + item.label + "</td>" +
-          "<td style='color:var(--ink-soft)'>" + (item.href || "دراپ‌داون") + "</td>" +
-          '<td><div class="admin-table-actions">' +
+          "<td data-label='عنوان'>" + item.label + "</td>" +
+          "<td data-label='لینک' style='color:var(--ink-soft)'>" + (item.href || "دراپ‌داون") + "</td>" +
+          '<td data-label="ترتیب"><div class="admin-table-actions">' +
             '<button type="button" class="admin-icon-btn" data-move-up="' + item.key + '"' + (i === 0 ? " disabled" : "") + ' aria-label="بالا">↑</button>' +
             '<button type="button" class="admin-icon-btn" data-move-down="' + item.key + '"' + (i === items.length - 1 ? " disabled" : "") + ' aria-label="پایین">↓</button>' +
           "</div></td>" +
-          "<td><label class='admin-checkbox-row'><input type='checkbox' data-toggle-visible='" + item.key + "'" + (item.visible !== false ? " checked" : "") + " /></label></td>" +
+          "<td data-label='نمایش در تب بار'><label class='admin-checkbox-row'><input type='checkbox' data-toggle-visible='" + item.key + "'" + (item.visible !== false ? " checked" : "") + " /></label></td>" +
         "</tr>"
       );
     }).join("");
@@ -123,9 +123,9 @@
     tbody.innerHTML = list.map(function (p) {
       return (
         "<tr>" +
-          "<td>" + p.title + "</td>" +
-          "<td style='direction:ltr;text-align:right;color:var(--ink-soft)'>page.html?slug=" + p.slug + "</td>" +
-          "<td>" + (p.showInNav ? '<span class="admin-badge is-on">بله</span>' : '<span class="admin-badge is-off">خیر</span>') + "</td>" +
+          "<td data-label='عنوان'>" + p.title + "</td>" +
+          "<td data-label='آدرس' style='direction:ltr;text-align:right;color:var(--ink-soft)'>page.html?slug=" + p.slug + "</td>" +
+          "<td data-label='در تب بار'>" + (p.showInNav ? '<span class="admin-badge is-on">بله</span>' : '<span class="admin-badge is-off">خیر</span>') + "</td>" +
           '<td><div class="admin-table-actions">' +
             '<button type="button" class="admin-icon-btn" data-edit-page="' + p.slug + '" aria-label="ویرایش">✎</button>' +
             '<button type="button" class="admin-icon-btn is-danger" data-delete-page="' + p.slug + '" aria-label="حذف">🗑</button>' +

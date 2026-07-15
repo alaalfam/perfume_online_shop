@@ -73,20 +73,20 @@
     tbody.innerHTML = list.map(function (o) {
       return (
         "<tr class='admin-clickable-row' data-row-link='order-detail.html?id=" + o.id + "'>" +
-          "<td style='font-weight:700'>" + o.id + "</td>" +
-          "<td>" + formatDate(o.createdAt) + "</td>" +
-          "<td>" + (o.customerName || "—") + "</td>" +
-          "<td style='direction:ltr;text-align:right'>" + o.customerPhone + "</td>" +
-          "<td>" + itemCount(o).toLocaleString("fa-IR") + " قلم</td>" +
-          "<td>" + catalog.formatToman(o.total) + "</td>" +
-          "<td>" +
+          "<td data-label='کد سفارش' style='font-weight:700'>" + o.id + "</td>" +
+          "<td data-label='تاریخ'>" + formatDate(o.createdAt) + "</td>" +
+          "<td data-label='مشتری'>" + (o.customerName || "—") + "</td>" +
+          "<td data-label='شماره تماس' style='direction:ltr;text-align:right'>" + o.customerPhone + "</td>" +
+          "<td data-label='اقلام'>" + itemCount(o).toLocaleString("fa-IR") + " قلم</td>" +
+          "<td data-label='مبلغ کل'>" + catalog.formatToman(o.total) + "</td>" +
+          "<td data-label='وضعیت سفارش'>" +
             '<select class="admin-status-select" data-status-for="' + o.id + '">' +
               orders.STATUS_ORDER.map(function (s) {
                 return '<option value="' + s + '"' + (s === o.status ? " selected" : "") + '>' + orders.STATUS_LABELS[s] + "</option>";
               }).join("") +
             "</select>" +
           "</td>" +
-          "<td><button type='button' class='admin-badge " + (o.paid ? "is-on" : "is-off") + "' data-toggle-paid='" + o.id + "' style='border:none;cursor:pointer'>" + (o.paid ? "پرداخت‌شده" : "پرداخت‌نشده") + "</button></td>" +
+          "<td data-label='وضعیت پرداخت'><button type='button' class='admin-badge " + (o.paid ? "is-on" : "is-off") + "' data-toggle-paid='" + o.id + "' style='border:none;cursor:pointer'>" + (o.paid ? "پرداخت‌شده" : "پرداخت‌نشده") + "</button></td>" +
           "<td><a href='order-detail.html?id=" + o.id + "' class='admin-icon-btn' aria-label='مشاهده جزئیات' data-row-ignore>›</a></td>" +
         "</tr>"
       );
@@ -105,11 +105,11 @@
       const itemsSummary = c.items.map(function (it) { return it.name + " ×" + it.qty.toLocaleString("fa-IR"); }).join("، ");
       return (
         "<tr>" +
-          "<td>" + (c.isLive ? '<span class="admin-badge is-on">سبد فعلی مرورگر</span>' : '<span class="admin-badge is-off">نمونه رهاشده</span>') + "</td>" +
-          "<td style='direction:ltr;text-align:right'>" + c.customerPhone + "</td>" +
-          "<td>" + itemsSummary + "</td>" +
-          "<td>" + catalog.formatToman(c.total) + "</td>" +
-          "<td>" + formatDate(c.updatedAt) + "</td>" +
+          "<td data-label='وضعیت'>" + (c.isLive ? '<span class="admin-badge is-on">سبد فعلی مرورگر</span>' : '<span class="admin-badge is-off">نمونه رهاشده</span>') + "</td>" +
+          "<td data-label='مشتری' style='direction:ltr;text-align:right'>" + c.customerPhone + "</td>" +
+          "<td data-label='اقلام'>" + itemsSummary + "</td>" +
+          "<td data-label='مبلغ'>" + catalog.formatToman(c.total) + "</td>" +
+          "<td data-label='آخرین بروزرسانی'>" + formatDate(c.updatedAt) + "</td>" +
         "</tr>"
       );
     }).join("");
