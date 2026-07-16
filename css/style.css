@@ -121,6 +121,9 @@
     drawer, so its shadow is cast the other way */
   --shadow-fab: 0 10px 26px rgba(20, 18, 15, 0.25);
   --shadow-toast: 0 12px 30px rgba(20, 18, 15, 0.25);
+  --shadow-resting: 0 2px 8px rgba(20, 18, 15, 0.06); /* a small always-on
+    shadow for cards that need to read as "raised" even before hover —
+    distinct from --shadow-card-hover, which is the bigger hover-lift */
 
   /* ---------- Motion ----------
      --ease-out is the one signature curve, reused everywhere. Durations
@@ -906,7 +909,11 @@ button {
 .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
 .category-card {
   position: relative; display: block; padding: 1.6rem 1.3rem; border-radius: var(--radius);
-  border: 1px solid var(--line); background: #fff; text-align: center;
+  /* stronger than the site-wide --line (0.12 opacity, barely visible) and
+     paired with a small resting shadow, so the card reads as raised/
+     bordered even before hover — not just on a white-on-ivory edge */
+  border: 1px solid rgba(33, 28, 21, 0.2); background: #fff; text-align: center;
+  box-shadow: var(--shadow-resting);
   transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
 }
 .category-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card-hover); border-color: var(--gold-soft); }
