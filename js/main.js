@@ -23,6 +23,8 @@
     header:      document.getElementById("siteHeader"),
     navToggle:   document.getElementById("navToggle"),
     primaryNav:  document.getElementById("primaryNav"),
+    navOverlay:  document.getElementById("navOverlay"),
+    navClose:    document.getElementById("navClose"),
     cartButton:  document.getElementById("cartButton"),
     cartCount:   document.getElementById("cartCount"),
     cartDrawer:  document.getElementById("cartDrawer"),
@@ -36,20 +38,45 @@
     toast:       document.getElementById("toast")
   };
 
+  /* Cart drawer and mobile nav are both modal side-drawers with a
+     click-outside-to-close overlay; while either is open, body scroll
+     is locked — but only cleared once *neither* is open, in case both
+     somehow got triggered at once. */
+  function syncBodyScrollLock() {
+    const navOpen = dom.primaryNav && dom.primaryNav.classList.contains("is-open");
+    const cartOpen = dom.cartDrawer.classList.contains("is-open");
+    document.body.style.overflow = (navOpen || cartOpen) ? "hidden" : "";
+  }
+
   /* ---------- Mobile nav ---------- */
+  function openNav() {
+    dom.primaryNav.classList.add("is-open");
+    if (dom.navOverlay) dom.navOverlay.classList.add("is-open");
+    dom.navToggle.classList.add("is-open");
+    dom.navToggle.setAttribute("aria-expanded", "true");
+    syncBodyScrollLock();
+  }
+
+  function closeNav() {
+    dom.primaryNav.classList.remove("is-open");
+    if (dom.navOverlay) dom.navOverlay.classList.remove("is-open");
+    dom.navToggle.classList.remove("is-open");
+    dom.navToggle.setAttribute("aria-expanded", "false");
+    syncBodyScrollLock();
+  }
+
   function initNav() {
     if (!dom.navToggle) return;
     dom.navToggle.addEventListener("click", function () {
-      const open = dom.primaryNav.classList.toggle("is-open");
-      dom.navToggle.classList.toggle("is-open", open);
-      dom.navToggle.setAttribute("aria-expanded", String(open));
+      if (dom.primaryNav.classList.contains("is-open")) closeNav(); else openNav();
     });
+    if (dom.navOverlay) dom.navOverlay.addEventListener("click", closeNav);
+    if (dom.navClose) dom.navClose.addEventListener("click", closeNav);
     dom.primaryNav.addEventListener("click", function (event) {
-      if (event.target.tagName === "A" && dom.primaryNav.classList.contains("is-open")) {
-        dom.primaryNav.classList.remove("is-open");
-        dom.navToggle.classList.remove("is-open");
-        dom.navToggle.setAttribute("aria-expanded", "false");
-      }
+      if (event.target.tagName === "A" && dom.primaryNav.classList.contains("is-open")) closeNav();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && dom.primaryNav.classList.contains("is-open")) closeNav();
     });
   }
 
@@ -58,14 +85,14 @@
     dom.cartDrawer.classList.add("is-open");
     dom.cartOverlay.classList.add("is-open");
     dom.cartDrawer.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
+    syncBodyScrollLock();
   }
 
   function closeCart() {
     dom.cartDrawer.classList.remove("is-open");
     dom.cartOverlay.classList.remove("is-open");
     dom.cartDrawer.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
+    syncBodyScrollLock();
   }
 
   function renderCart() {

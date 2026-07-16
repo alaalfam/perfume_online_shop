@@ -59,7 +59,10 @@
       </a>
 
       <nav class="primary-nav" id="primaryNav" aria-label="ناوبری اصلی">
-        <a href="index.html#collection" data-navkey="shop">فروشگاه</a>
+        <div class="nav-drawer-head">
+          <button class="cart-close" id="navClose" aria-label="بستن منو">×</button>
+        </div>
+        <a href="products.html" data-navkey="shop">فروشگاه</a>
 
         <div class="nav-item has-dropdown" data-navkey="categories">
           <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-haspopup="true">
@@ -88,10 +91,10 @@
 
       <div class="header-actions">
         <a class="icon-btn" href="login.html" aria-label="ورود یا ثبت‌نام" title="ورود / ثبت‌نام">
-          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
         </a>
         <button class="icon-btn" id="searchToggle" aria-label="جستجو">
-          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
         </button>
         <button class="cart-button" id="cartButton" aria-label="باز کردن سبد خرید">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -101,6 +104,7 @@
         </button>
       </div>
     </div>
+  <div class="nav-overlay" id="navOverlay"></div>
   </header>
 
   <main>
@@ -132,8 +136,8 @@
       </div>
       <nav class="footer-col" aria-label="فروشگاه">
         <h3>فروشگاه</h3>
-        <a href="index.html#collection">همه محصولات</a>
-        <a href="index.html?sort=newest#collection">جدیدترین‌ها</a>
+        <a href="products.html">همه محصولات</a>
+        <a href="products.html?sort=newest">جدیدترین‌ها</a>
         <a href="discounts.html">تخفیف‌دارها</a>
       </nav>
       <nav class="footer-col" aria-label="خدمات مشتریان">
